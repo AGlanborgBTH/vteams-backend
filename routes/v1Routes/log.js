@@ -25,17 +25,6 @@
                 Middleware:
                     Check for valid token
 
-            PUT
-                update log (row) in collection
-
-                Body:
-                    userId
-                    recordId
-
-                Middleware:
-                    Check for valid token
-                    Check for login identity equals userId
-
         "/:id"
             GET
                 fetch all logs by user-:id from collection
