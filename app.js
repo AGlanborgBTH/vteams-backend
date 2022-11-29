@@ -13,9 +13,7 @@
 
 
 require("dotenv").config();
-const cities = require("./routes/cities");
-const users = require("./routes/users");
-const scooters = require("./routes/scooters");
+const ver1 = require("./routes/v1.js");
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -43,9 +41,7 @@ app.use(helmet());
 app.use(express.json());
 
 
-app.use("/cities", cities);
-app.use("/users", users);
-app.use("/scooters", scooters);
+app.use("/api", ver1)
 
 app.listen(port, () => {
   console.log(`Server Started at ${port}`);

@@ -56,7 +56,7 @@ const bcrypt = require("bcrypt");
 /*-----------------*/
 
 // Get all users Route
-router.get("/getAll", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const data = await Users.find();
     res.json({ data });
@@ -66,7 +66,7 @@ router.get("/getAll", async (req, res) => {
 });
 
 // Get one user Route
-router.get("/getOne/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const data = await Users.findById(req.params.id);
     res.json(data);
@@ -76,7 +76,7 @@ router.get("/getOne/:id", async (req, res) => {
 });
 
 // Update one user Route
-router.patch("/update/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -91,7 +91,7 @@ router.patch("/update/:id", async (req, res) => {
 });
 
 // Signup Route
-router.post("/signup", async (req, res) => {
+router.post("/", async (req, res) => {
   const body = req.body;
 
   if (!(body.Email && body.Cryptedpassword)) {
@@ -103,21 +103,6 @@ router.post("/signup", async (req, res) => {
 
   user.Cryptedpassword = await bcrypt.hash(user.Cryptedpassword, salt);
   user.save().then((doc) => res.status(201).send(doc));
-});
-
-
-// Login Route
-router.post("/login", async (req, res) => {
-  const body = req.body;
-  const user = await Users.findOne({ Email: body.Email });
-  if (user) {
-    const validPassword = await bcrypt.compare(body.Cryptedpassword, user.Cryptedpassword);
-    if (validPassword) {
-      res.status(200).json({ message: "Your Password Is Valid, Welcome Stranger" });
-    } else {
-      res.status(400).json({ error: "You Have Entered An Invalid Email or Password" });
-    }
-  }
 });
 
 module.exports = router;

@@ -17,3 +17,12 @@
             Leading to './v1Routes/login'
 */
 
+const cities = requrie("./v1Routes/city.js")
+const users = requrie("./v1Routes/user.js")
+const scooters = requrie("./v1Routes/scooter.js")
+const login = requrie("./v1Routes/login.js")
+
+app.use("/cities", cities);
+app.use("/users", users);
+app.use("/scooters", scooters);
+app.use("/login", login);

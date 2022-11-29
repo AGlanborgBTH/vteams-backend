@@ -25,16 +25,20 @@
                 Middleware:
                     Check for project manager identity
 */
+import getAll from '../../modules/city/get'
+
 const express = require("express");
-const { Cities } = require("../models/Cities");
 const router = express.Router();
 
 /*-----------------*/
 // Cities Routes
 /*-----------------*/
 
+// Get all cities Route
+router.get("/", getAll);
+
 // Create a city Route
-router.post("/post", async (req, res) => {
+router.post("/", async (req, res) => {
   const data = new Cities({
     Name: req.body.Name,
     Center: req.body.Center,
@@ -51,18 +55,8 @@ router.post("/post", async (req, res) => {
   }
 });
 
-// Get all cities Route
-router.get("/getAll", async (req, res) => {
-  try {
-    const data = await Cities.find();
-    res.json({ data });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // Get one city Route
-router.get("/getOne/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const data = await Cities.findById(req.params.id);
     res.json(data);
@@ -72,7 +66,7 @@ router.get("/getOne/:id", async (req, res) => {
 });
 
 // Update one city Route
-router.patch("/update/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
