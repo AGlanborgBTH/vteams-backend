@@ -73,7 +73,7 @@ const updateOneScooter = require ('../../modules/scooter/patch')
 
 router.get("/", (req, res) => getAllScooters(req, res));
 router.get("/:id", (req, res) => getOneScooter(req, res));
-router.get("/:id", (req, res) => updateOneScooter(req, res));
+router.patch("/:id", (req, res) => updateOneScooter(req, res));
 
 
 module.exports = router;

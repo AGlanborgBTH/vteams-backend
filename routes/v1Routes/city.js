@@ -40,7 +40,7 @@ const router = express.Router();
 // Get all cities Route
 router.get("/", (res, req) => getAll(res, req));
 router.get("/:id", (res, req) => getOne(res, req));
-router.get("/:id", (res, req) =>updateOne(res, req));
+router.patch("/:id", (res, req) => updateOne(res, req));
 
 
 module.exports = router;
