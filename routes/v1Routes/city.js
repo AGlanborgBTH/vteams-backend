@@ -24,10 +24,11 @@
 
                 Middleware:
                     Check for project manager identity
+
 */
-import getAll from '../../modules/city/get'
-import getOne from '../../modules/city/get'
-import updateOne from '../../modules/city/patch'
+const getAll = require ('../../modules/city/get')
+const getOne = require ('../../modules/city/get')
+const updateOne = require ('../../modules/city/patch')
 
 const express = require("express");
 const router = express.Router();
@@ -37,9 +38,9 @@ const router = express.Router();
 /*-----------------*/
 
 // Get all cities Route
-router.get("/", getAll);
-router.get("/:id", getOne);
-router.get("/:id", updateOne);
+router.get("/", (res, req) => getAll(res, req));
+router.get("/:id", (res, req) => getOne(res, req));
+router.get("/:id", (res, req) =>updateOne(res, req));
 
 
 module.exports = router;

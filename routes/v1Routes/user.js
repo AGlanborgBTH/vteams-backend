@@ -47,22 +47,22 @@ Express:
 */
 
 const express = require("express");
-const { Users } = require("../models/Users");
+const { Users } = require("../../models/Users");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 
 /*-----------------*/
 // Users Routes
 /*-----------------*/
-import getAllUsers from '../../modules/user/get'
-import getOneUser from '../../modules/user/get'
-import updateUser from '../../modules/user/patch'
+const getAllUsers = require ('../../modules/user/get')
+const getOneUser = require ('../../modules/user/get')
+const updateUser = require ('../../modules/user/patch')
 
 
 // Get all cities Route
-router.get("/", getAllUsers);
-router.get("/:id", getOneUser);
-router.get("/:id", updateUser);
+router.get("/", (req, res) => getAllUsers(req, res));
+router.get("/:id", (req, res) => getOneUser(req, res));
+router.get("/:id", (req, res) => updateUser(req, res));
 
 
 

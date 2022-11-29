@@ -1,7 +1,7 @@
-const { Scooters } = require("../models/Scooters");
+const { Scooters } = require("../../models/Scooters");
 
 //get All Scooters
-export default async function getAllScooters(req, res) {
+async function getAllScooters(req, res) {
     try {
         const data = await Scooters.find();
         res.json({ data });
@@ -12,7 +12,7 @@ export default async function getAllScooters(req, res) {
 
 
 // Get One Scooter
-export default async function getOneScooter(req, res) {
+async function getOneScooter(req, res) {
     try {
         const data = await Scooters.findById(req.params.id);
         res.json(data);
@@ -20,3 +20,5 @@ export default async function getOneScooter(req, res) {
         res.status(500).json({ message: error.message });
       }
 }
+
+module.exports = { getAllScooters, getOneScooter };

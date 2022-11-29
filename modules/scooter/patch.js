@@ -1,7 +1,7 @@
-const { Scooters } = require("../models/Scooters");
+const { Scooters } = require("../../models/Scooters");
 
 //get All cities
-export default async function updateOneScooter(req, res) {
+async function updateOneScooter(req, res) {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -14,3 +14,5 @@ export default async function updateOneScooter(req, res) {
         res.status(500).json({ message: error.message });
       }
 }
+
+module.exports = updateOneScooter;

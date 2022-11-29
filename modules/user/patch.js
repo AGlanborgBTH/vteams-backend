@@ -1,8 +1,8 @@
-const { Users } = require("../models/Cities");
+const { Users } = require("../../models/Cities");
 
 
 // Get all users
-export default async function updateUser (req, res) {
+async function updateUser (req, res) {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -15,3 +15,5 @@ export default async function updateUser (req, res) {
         res.status(500).json({ message: error.message });
       }
 }
+
+module.exports = updateUser;

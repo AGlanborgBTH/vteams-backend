@@ -2,7 +2,7 @@ const { Users } = require("../models/Users");
 const bcrypt = require("bcrypt");
 
 // Login Function
-export default async function postLogin (req, res) {
+async function postLogin (req, res) {
     const body = req.body;
     const user = await Users.findOne({ Email: body.Email });
     if (user) {
@@ -14,3 +14,5 @@ export default async function postLogin (req, res) {
       }
     }
 }
+
+module.exports = postLogin;

@@ -58,21 +58,22 @@ Express:
 */
 
 const express = require("express");
-const { Scooters } = require("../models/Scooters");
+const { Scooters } = require("../../models/Scooters");
 const router = express.Router();
 
 /*-----------------*/
 // Scooters Routes
 /*-----------------*/
-import getAllScooters from '../../modules/scooter/get'
-import getOneScooter from '../../modules/scooter/get'
-import updateOneScooter from '../../modules/scooter/patch'
+
+const getAllScooters = require ('../../modules/scooter/get')
+const getOneScooter = require ('../../modules/scooter/get')
+const updateOneScooter = require ('../../modules/scooter/patch')
 
 
 
-router.get("/", getAllScooters);
-router.get("/:id", getOneScooter);
-router.get("/:id", updateOneScooter);
+router.get("/", (req, res) => getAllScooters(req, res));
+router.get("/:id", (req, res) => getOneScooter(req, res));
+router.get("/:id", (req, res) => updateOneScooter(req, res));
 
 
 module.exports = router;

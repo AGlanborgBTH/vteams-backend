@@ -1,7 +1,7 @@
-const { Cities } = require("../models/Cities");
+const { Cities } = require("../../models/Cities");
 
 //get All cities
-export default async function updateOne(req, res) {
+async function updateOne(req, res) {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -14,3 +14,5 @@ export default async function updateOne(req, res) {
         res.status(500).json({ message: error.message });
     }
 }
+
+module.exports = updateOne;

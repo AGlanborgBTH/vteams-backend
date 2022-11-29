@@ -2,7 +2,7 @@ const { Users } = require("../models/Users");
 const bcrypt = require("bcrypt");
 
 // Login Function
-export default async function postSignUp (req, res) {
+async function postSignUp (req, res) {
     const body = req.body;
 
     if (!(body.Email && body.Cryptedpassword)) {
@@ -15,3 +15,5 @@ export default async function postSignUp (req, res) {
     user.Cryptedpassword = await bcrypt.hash(user.Cryptedpassword, salt);
     user.save().then((doc) => res.status(201).send(doc));
 }
+
+module.exports = postSignUp;

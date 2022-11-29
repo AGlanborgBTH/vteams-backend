@@ -1,8 +1,8 @@
-const { Users } = require("../models/Cities");
+const { Users } = require("../../models/Cities");
 
 
 // Get all users
-export default async function getAllUsers(req, res) {
+async function getAllUsers(req, res) {
     try {
         const data = await Users.find();
         res.json({ data });
@@ -12,7 +12,7 @@ export default async function getAllUsers(req, res) {
 }
 
 // Get One user
-export default async function getOneUser(req, res) {
+async function getOneUser(req, res) {
     try {
         const data = await Users.findById(req.params.id);
         res.json(data);
@@ -20,3 +20,4 @@ export default async function getOneUser(req, res) {
         res.status(500).json({ message: error.message });
       }
 }
+module.exports = { getAllUsers, getOneUser };
