@@ -54,41 +54,17 @@ const bcrypt = require("bcrypt");
 /*-----------------*/
 // Users Routes
 /*-----------------*/
+import getAllUsers from '../../modules/user/get'
+import getOneUser from '../../modules/user/get'
+import updateUser from '../../modules/user/patch'
 
-// Get all users Route
-router.get("/", async (req, res) => {
-  try {
-    const data = await Users.find();
-    res.json({ data });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
-// Get one user Route
-router.get("/:id", async (req, res) => {
-  try {
-    const data = await Users.findById(req.params.id);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// Get all cities Route
+router.get("/", getAllUsers);
+router.get("/:id", getOneUser);
+router.get("/:id", updateUser);
 
-// Update one user Route
-router.patch("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const updatedData = req.body;
-    const options = { new: true };
 
-    const result = await Users.findByIdAndUpdate(id, updatedData, options);
-
-    res.send(result);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
 // Signup Route
 router.post("/", async (req, res) => {
