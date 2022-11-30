@@ -1,7 +1,7 @@
 const { Users } = require("../../models/Cities");
 
 
-// Get all users
+// Update One User By ID
 async function updateUser (req, res) {
     try {
         const id = req.params.id;

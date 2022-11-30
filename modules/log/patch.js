@@ -1,6 +1,6 @@
 const { Logs } = require("../../models/Logs");
 
-//get All Logs
+//Update Log By ID
 async function updateOneLog(req, res) {
     try {
         const id = req.params.id;

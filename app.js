@@ -20,6 +20,7 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const mongoString = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
+const app = require("./routes/v1.js");
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -31,14 +32,6 @@ database.on("error", (error) => {
 database.once("connected", () => {
   console.log("Database Connected Successfully");
 });
-
-const app = express();
-app.use(cors());
-
-
-// Helmet helps you secure your Express apps by setting various HTTP headers.
-app.use(helmet());
-app.use(express.json());
 
 
 app.use("/api", ver1)

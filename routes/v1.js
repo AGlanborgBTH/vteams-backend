@@ -22,10 +22,20 @@ const { users } = require("./v1Routes/user");
 const { scooters } = require("./v1Routes/scooter");
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
+const app = express();
+app.use(cors());
+
+
+// Helmet helps you secure your Express apps by setting various HTTP headers.
+app.use(helmet());
+app.use(express.json());
 
 
 app.use("/cities", cities);
 app.use("/users", users);
 app.use("/scooters", scooters);
 app.use("/login", login);
+
+module.exports = app;

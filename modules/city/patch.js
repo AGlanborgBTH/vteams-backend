@@ -1,6 +1,6 @@
 const { Cities } = require("../../models/Cities");
 
-//get All cities
+//Update One City By ID
 async function updateOne(req, res) {
     try {
         const id = req.params.id;

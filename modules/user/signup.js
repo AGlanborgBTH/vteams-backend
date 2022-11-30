@@ -1,7 +1,7 @@
 const { Users } = require("../models/Users");
 const bcrypt = require("bcrypt");
 
-// Login Function
+// Signup Function
 async function postSignUp (req, res) {
     const body = req.body;
 

@@ -62,7 +62,7 @@ const updateUser = require ('../../modules/user/patch')
 // Get all cities Route
 router.get("/", (req, res) => getAllUsers(req, res));
 router.get("/:id", (req, res) => getOneUser(req, res));
-router.get("/:id", (req, res) => updateUser(req, res));
+router.patch("/:id", (req, res) => updateUser(req, res));
 
 
 

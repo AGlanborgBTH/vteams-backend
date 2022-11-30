@@ -1,6 +1,6 @@
 const { Logs } = require("../../models/Logs");
 
-// post a new log
+// Post Route For Logs
 async function postLog(req, res) {
     const data = new Logs({
         RecordID: req.body.RecordID,

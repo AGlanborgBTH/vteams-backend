@@ -1,6 +1,6 @@
 const { Scooters } = require("../../models/Scooters");
 
-//get All cities
+//Update Scooter By ID
 async function updateOneScooter(req, res) {
     try {
         const id = req.params.id;
