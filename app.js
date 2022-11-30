@@ -36,7 +36,7 @@ const Server = express();
 Server.use(cors());
 Server.use(express.json());
 
-Server.use("/api", ver1)
+Server.use("/v1", ver1)
 
 Server.listen(port, () => {
   console.log(`Server Started at ${port}`);
