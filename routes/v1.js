@@ -18,6 +18,7 @@
 */
 
 const cities = require("./v1Routes/city");
+const logs = require("./v1Routes/log");
 const users = require("./v1Routes/user");
 const scooters = require("./v1Routes/scooter");
 const login = require("./v1Routes/user");
@@ -40,6 +41,7 @@ router.use("/users", users);
 router.use("/scooters", scooters);
 router.use("/login", login);
 router.use("/signup", signup);
+router.use("/logs", logs);
 
 
 module.exports = router;

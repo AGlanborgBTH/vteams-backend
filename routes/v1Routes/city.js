@@ -26,9 +26,9 @@
                     Check for project manager identity
 
 */
-const getAll = require ('../../modules/city/get')
-const getOne = require ('../../modules/city/get')
-const updateOne = require ('../../modules/city/patch')
+const { getAll } = require ('../../modules/city/get')
+const {getOne} = require ('../../modules/city/get')
+const {updateOne} = require ('../../modules/city/patch')
 
 const express = require("express");
 const router = express.Router();

@@ -52,11 +52,11 @@ const router = express.Router();
 /*-----------------*/
 // Users Routes
 /*-----------------*/
-const getAllUsers = require ('../../modules/user/get')
-const getOneUser = require ('../../modules/user/get')
-const updateUser = require ('../../modules/user/patch')
-const postSignUp = require ('../../modules/user/signup')
-const postLogin = require ('../../modules/user/login')
+const {getAllUsers} = require ('../../modules/user/get')
+const {getOneUser} = require ('../../modules/user/get')
+const {updateUser} = require ('../../modules/user/patch')
+const {postSignUp} = require ('../../modules/user/signup')
+const {postLogin} = require ('../../modules/user/login')
 
 
 // Get all cities Route

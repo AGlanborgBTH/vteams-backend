@@ -64,9 +64,9 @@ const router = express.Router();
 // Scooters Routes
 /*-----------------*/
 
-const getAllScooters = require ('../../modules/scooter/get')
-const getOneScooter = require ('../../modules/scooter/get')
-const updateOneScooter = require ('../../modules/scooter/patch')
+const {getAllScooters} = require ('../../modules/scooter/get')
+const {getOneScooter} = require ('../../modules/scooter/get')
+const {updateOneScooter} = require ('../../modules/scooter/patch')
 
 
 

@@ -33,10 +33,10 @@
                     Check for valid token
                     Check for login identity equals user-:id
 */
-const getAllLogs = require ('../../modules/log/get')
-const getOneLog = require ('../../modules/log/get')
-const postLog = require ('../../modules/log/post')
-const updateOneLog = require ('../../modules/log/patch')
+const {getAllLogs} = require ('../../modules/log/get')
+const {getOneLog} = require ('../../modules/log/get')
+const {postLog} = require ('../../modules/log/post')
+const {updateOneLog} = require ('../../modules/log/patch')
 
 const express = require("express");
 const router = express.Router();
