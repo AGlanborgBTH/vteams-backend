@@ -58,7 +58,6 @@ Express:
 */
 
 const express = require("express");
-const { Scooters } = require("../../models/Scooters");
 const router = express.Router();
 
 /*-----------------*/
@@ -71,9 +70,9 @@ const updateOneScooter = require ('../../modules/scooter/patch')
 
 
 
-router.get("/", (req, res) => getAllScooters(req, res));
-router.get("/:id", (req, res) => getOneScooter(req, res));
-router.patch("/:id", (req, res) => updateOneScooter(req, res));
+router.get("/", (req, res) => {return getAllScooters(req, res)});
+router.get("/:id", (req, res) => {return getOneScooter(req, res)});
+router.patch("/:id", (req, res) => {return updateOneScooter(req, res)});
 
 
 module.exports = router;

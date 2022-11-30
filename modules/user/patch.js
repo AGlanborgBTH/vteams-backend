@@ -1,4 +1,4 @@
-const { Users } = require("../../models/Cities");
+const { Users } = require("../../models/Users");
 
 
 // Update One User By ID

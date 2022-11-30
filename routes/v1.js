@@ -17,25 +17,29 @@
             Leading to './v1Routes/login'
 */
 
-const { cities } = require("./v1Routes/city");
-const { users } = require("./v1Routes/user");
-const { scooters } = require("./v1Routes/scooter");
+const cities = require("./v1Routes/city");
+const users = require("./v1Routes/user");
+const scooters = require("./v1Routes/scooter");
+const login = require("./v1Routes/user");
+const signup = require("./v1Routes/user");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const router = express.Router();
 
-const app = express();
-app.use(cors());
+router.use(cors());
 
 
 // Helmet helps you secure your Express apps by setting various HTTP headers.
-app.use(helmet());
-app.use(express.json());
+router.use(helmet());
+router.use(express.json());
 
 
-app.use("/cities", cities);
-app.use("/users", users);
-app.use("/scooters", scooters);
-app.use("/login", login);
+router.use("/cities", cities);
+router.use("/users", users);
+router.use("/scooters", scooters);
+router.use("/login", login);
+router.use("/signup", signup);
 
-module.exports = app;
+
+module.exports = router;

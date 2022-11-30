@@ -14,13 +14,12 @@
 
 require("dotenv").config();
 const ver1 = require("./routes/v1.js");
-const cors = require("cors");
-const express = require("express");
 const mongoose = require("mongoose");
-const helmet = require("helmet");
 const mongoString = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
 const app = require("./routes/v1.js");
+const httpServer = require("http").createServer(app);
+
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -33,9 +32,10 @@ database.once("connected", () => {
   console.log("Database Connected Successfully");
 });
 
-
 app.use("/api", ver1)
 
-app.listen(port, () => {
-  console.log(`Server Started at ${port}`);
+
+var server = httpServer.listen(port, function () {
+  var host = server.address().address;
+  console.log('Server Started at', host, port);
 });

@@ -46,10 +46,10 @@ const router = express.Router();
 /*-----------------*/
 
 // Get all Logs Route
-router.get("/", (res, req) => getAllLogs(res, req));
-router.get("/:id", (res, req) => getOneLog(res, req));
-router.post("/", (res, req) => postLog(res, req));
-router.patch("/:id", (res, req) => updateOneLog(res, req));
+router.get("/", (res, req) => {return getAllLogs(res, req)});
+router.get("/:id", (res, req) => {return getOneLog(res, req)});
+router.post("/", (res, req) => {return postLog(res, req)});
+router.patch("/:id", (res, req) => {return updateOneLog(res, req)});
 
 
 module.exports = router;

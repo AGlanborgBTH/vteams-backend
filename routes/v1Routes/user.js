@@ -47,9 +47,7 @@ Express:
 */
 
 const express = require("express");
-const { Users } = require("../../models/Users");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 
 /*-----------------*/
 // Users Routes
@@ -57,28 +55,17 @@ const bcrypt = require("bcrypt");
 const getAllUsers = require ('../../modules/user/get')
 const getOneUser = require ('../../modules/user/get')
 const updateUser = require ('../../modules/user/patch')
+const postSignUp = require ('../../modules/user/signup')
+const postLogin = require ('../../modules/user/login')
 
 
 // Get all cities Route
-router.get("/", (req, res) => getAllUsers(req, res));
-router.get("/:id", (req, res) => getOneUser(req, res));
-router.patch("/:id", (req, res) => updateUser(req, res));
+router.get("/", (req, res) => {return getAllUsers(req, res)});
+router.get("/:id", (req, res) => {return getOneUser(req, res)});
+router.patch("/:id", (req, res) => {return updateUser(req, res)});
+router.post("/", (req, res) => {return postSignUp(req, res)});
+router.post("/:id", (req, res) => {return postLogin(req, res)});
 
 
-
-// Signup Route
-router.post("/", async (req, res) => {
-  const body = req.body;
-
-  if (!(body.Email && body.Cryptedpassword)) {
-    return res.status(400).send({ error: "Data not formatted properly" });
-  }
-
-  const user = new Users(body);
-  const salt = await bcrypt.genSalt(10);
-
-  user.Cryptedpassword = await bcrypt.hash(user.Cryptedpassword, salt);
-  user.save().then((doc) => res.status(201).send(doc));
-});
 
 module.exports = router;
