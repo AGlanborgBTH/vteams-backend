@@ -19,6 +19,7 @@ const mongoString = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
 const cors = require("cors");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 
 
 mongoose.connect(mongoString);
@@ -35,8 +36,10 @@ database.once("connected", () => {
 const Server = express();
 Server.use(cors());
 Server.use(express.json());
+Server.use(cookieParser());
 
-Server.use("/v1", ver1)
+Server.use("/v1", ver1);
+
 
 Server.listen(port, () => {
   console.log(`Server Started at ${port}`);
