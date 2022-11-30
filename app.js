@@ -17,8 +17,8 @@ const ver1 = require("./routes/v1.js");
 const mongoose = require("mongoose");
 const mongoString = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
-const app = require("./routes/v1.js");
-const httpServer = require("http").createServer(app);
+const cors = require("cors");
+const express = require("express");
 
 
 mongoose.connect(mongoString);
@@ -32,10 +32,12 @@ database.once("connected", () => {
   console.log("Database Connected Successfully");
 });
 
-app.use("/api", ver1)
+const Server = express();
+Server.use(cors());
+Server.use(express.json());
 
+Server.use("/api", ver1)
 
-var server = httpServer.listen(port, function () {
-  var host = server.address().address;
-  console.log('Server Started at', host, port);
+Server.listen(port, () => {
+  console.log(`Server Started at ${port}`);
 });
