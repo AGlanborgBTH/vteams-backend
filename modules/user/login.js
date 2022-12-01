@@ -15,7 +15,7 @@ async function postLogin (req, res) {
         res.cookie("access-token", accessToken, {
           maxAge: 2592000000
         })
-        res.status(200).json({ message: "Your Password Is Valid, Welcome Stranger" });
+        res.status(200).json({ message: "Your Password Is Valid, Welcome Stranger", id: user._id, accessToken: accessToken, Email: user.Email});
       } else {
         res.status(400).json({ error: "You Have Entered An Invalid Email or Password" });
       }
