@@ -63,8 +63,8 @@ const {postLogin} = require ('../../modules/user/login')
 router.get("/", (req, res) => {return getAllUsers(req, res)});
 router.get("/:id", (req, res) => {return getOneUser(req, res)});
 router.patch("/:id", (req, res) => {return updateUser(req, res)});
-router.post("/", (req, res) => {return postSignUp(req, res)});
-router.post("/:id", (req, res) => {return postLogin(req, res)});
+router.post("/signup", (req, res) => {return postSignUp(req, res)});
+router.post("/login", (req, res) => {return postLogin(req, res)});
 
 
 

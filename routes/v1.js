@@ -21,8 +21,6 @@ const cities = require("./v1Routes/city");
 const logs = require("./v1Routes/log");
 const users = require("./v1Routes/user");
 const scooters = require("./v1Routes/scooter");
-const login = require("./v1Routes/user");
-const signup = require("./v1Routes/user");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -39,9 +37,8 @@ router.use(express.json());
 router.use("/cities", cities);
 router.use("/users", users);
 router.use("/scooters", scooters);
-router.use("/login", login);
-router.use("/signup", signup);
 router.use("/logs", logs);
+
 
 
 module.exports = router;

@@ -8,11 +8,13 @@ async function postLogin (req, res) {
     if (user) {
       const validPassword = await bcrypt.compare(body.Cryptedpassword, user.Cryptedpassword);
       if (validPassword) {
-        res.status(200).json({ message: "Your Password Is Valid, Welcome Stranger" });
+        res.status(200).json({ message: "Your Password Is Valid, Welcome ", id:user.id, Email:user.Email});
       } else {
         res.status(400).json({ error: "You Have Entered An Invalid Email or Password" });
       }
     }
 }
 
-module.exports = postLogin;
+module.exports = {
+  postLogin
+  };

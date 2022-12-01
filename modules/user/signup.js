@@ -16,4 +16,6 @@ async function postSignUp (req, res) {
     user.save().then((doc) => res.status(201).send(doc));
 }
 
-module.exports = postSignUp;
+module.exports = {
+  postSignUp
+};
