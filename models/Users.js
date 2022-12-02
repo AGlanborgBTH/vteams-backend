@@ -22,9 +22,11 @@ const UsersSchema = new mongoose.Schema(
     Adminstatus : {
       type: Boolean,
       required: true,
+      default: false,
     },
     Wallet : {
       type: Number,
+      default: 0,
       required: true,
     },
   }
