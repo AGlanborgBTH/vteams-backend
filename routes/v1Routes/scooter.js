@@ -1,58 +1,19 @@
-/*
-Main file for actions for endpoint 'scooter'
+/*-----------------*/
+// Scooters Routes
+/*-----------------*/
 
-This file will contain:
-    Ports for CRUD of scooters-collection
+const express = require("express");
+const router = express.Router();
 
-Imports:
-    object from '../../modules/scooter'
+const {getAllScooters} = require ('../../modules/scooter/get')
+const {getOneScooter} = require ('../../modules/scooter/get')
+const {updateOneScooter} = require ('../../modules/scooter/patch')
 
-Express:
-    "/"
-        GET
-            If:
-                User:
-                    Fetch all scooters without inUseBy- and timeInUse-value
-                Admin:
-                    Fetch all scooters
 
-            Middleware:
-                Check for valid token
 
-        POST
-            add scooter (row) to collection
+router.get("/", (req, res) => {return getAllScooters(req, res)});
+router.get("/:id", (req, res) => {return getOneScooter(req, res)});
+router.patch("/:id", (req, res) => {return updateOneScooter(req, res)});
 
-            Body:
-                name
-                inUse = false
-                inUseBy = null
-                velocity = 0
-                battery
-                charging
-                city
-                location {
-                    long,
-                    lat
-                }
-                destination = {}
 
-            Middleware:
-                Check for project manager identity
-
-    "/:id"
-        GET
-            If:
-                User:
-                    Fetch scooter by :id without inUseBy- and timeInUse-value
-                Admin:
-                    Fetch scooter by :id
-
-            Middleware:
-                Check for valid token
-
-        GET
-            update scooter content by scooter-:id
-
-            Middleware:
-                Check for valid token
-*/
+module.exports = router;

@@ -1,3 +1,0 @@
-/*
-    Main file for functions regarding loging in users
-*/
