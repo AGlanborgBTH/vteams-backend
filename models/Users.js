@@ -9,9 +9,11 @@ const UsersSchema = new mongoose.Schema(
     },
     Firstname: {
       type: String,
+      required: true,
     },
     Surname: {
       type: String,
+      required: true,
     },
     Cryptedpassword : {
       type: String,
@@ -19,9 +21,11 @@ const UsersSchema = new mongoose.Schema(
     },
     Adminstatus : {
       type: Boolean,
+      required: true,
     },
     Wallet : {
       type: Number,
+      required: true,
     },
   }
 );
