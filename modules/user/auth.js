@@ -6,9 +6,7 @@ const clientId = process.env.GITHUBCLIENTID;
 const secret = process.env.GITHUBCLIENTSECRET;
 
 async function getOauthLogin(req,res) {
-    console.log("reached")
     const code = lodash.get(req, "query.code");
-    const path = lodash.get(req, "query.oath", '/');
 
     if (!code) {
         throw new Error("No code")
@@ -17,6 +15,21 @@ async function getOauthLogin(req,res) {
     const gitHubUserToken = await getGitHubAccesToken(code);
     const emails = await getGitHubUserEmails(gitHubUserToken);
     const primaryEmail = getPrimaryEmail(emails);
+    const userData = await getGitHubUserName(gitHubUserToken);
+
+    const user = {
+        "Firstname": userData.login,
+        "Email": primaryEmail,
+        "GitHub": true,
+        "Cryptedpassword": "github forever"
+    }
+
+    let signup = await signUpGitHubUser(user);
+    let login = await logInGitHubUser(user);
+    console.log("registration");
+    console.log(signup);
+    console.log("login");
+    console.log(login);
 
     res.redirect(`http://localhost:8080`)
 }
@@ -34,7 +47,6 @@ async function getGitHubAccesToken(code, res) {
     const urlParams = new URLSearchParams(gitHubToken);
     const accessToken = urlParams.get("access_token")
 
-    console.log("My token:", accessToken);
     return accessToken;
 }
 
@@ -50,11 +62,59 @@ async function getGitHubUserEmails(userToken) {
     return data.json();
 }
 
+async function getGitHubUserName(userToken) {
+    const req =  fetch("https://api.github.com/user", {
+        headers: {
+            Authorization: `Bearer ${userToken}`,
+            Accept: "application/vnd.github+json",
+            'X-GitHub-Api-Version': "2022-11-28"
+        }
+    })
+
+    const data = await req;
+    return data.json();
+}
+
+
 function getPrimaryEmail(emails) {
     for (let i=0; i <= emails.length; i++) {
         if (emails[i].primary === true) {
             return emails[i].email
         }
+    }
+}
+
+async function signUpGitHubUser(body) {
+    try {
+        const req = fetch ("http://localhost:3000/v1/users/signup", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        const data = await req;
+        return data.json()
+    } catch (error) {
+        return error
+    }
+}
+
+async function logInGitHubUser(body) {
+    try {
+        const req = fetch ("http://localhost:3000/v1/users/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        const data = await req;
+        return data.json()
+    } catch (error) {
+        return error
     }
 }
 

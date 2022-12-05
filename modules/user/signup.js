@@ -8,9 +8,12 @@ async function postSignUp (req, res) {
     if (!(body.Email && body.Cryptedpassword)) {
       return res.status(400).send({ error: "Data not formatted properly" });
     }
-    //check if all fields are filled, Email, Firstname, Surname, Cryptedpassword
-    if (!(body.Email && body.Firstname && body.Surname && body.Cryptedpassword)) {
-      return res.status(400).send({ error: "You're missing a field" });
+
+    if (!body.GitHub) {
+      //check if all fields are filled, Email, Firstname, Surname, Cryptedpassword
+      if (!(body.Email && body.Firstname && body.Surname && body.Cryptedpassword)) {
+        return res.status(400).send({ error: "You're missing a field" });
+      }
     }
     const user = new Users(body);
     //check if written email exists in database, if so return error message

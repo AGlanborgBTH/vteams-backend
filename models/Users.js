@@ -9,11 +9,9 @@ const UsersSchema = new mongoose.Schema(
     },
     Firstname: {
       type: String,
-      required: true,
     },
     Surname: {
       type: String,
-      required: true,
     },
     Cryptedpassword : {
       type: String,
