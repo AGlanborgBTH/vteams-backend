@@ -1,11 +1,27 @@
 const lodash = require("lodash");
 const axios = require("axios");
+const fetch = require('node-fetch');
 
 const clientId = process.env.GITHUBCLIENTID;
 const secret = process.env.GITHUBCLIENTSECRET;
-const jwtsecret = process.env.JWTSECRET;
 
-async function getGitHubUser(code, res) {
+async function getOauthLogin(req,res) {
+    console.log("reached")
+    const code = lodash.get(req, "query.code");
+    const path = lodash.get(req, "query.oath", '/');
+
+    if (!code) {
+        throw new Error("No code")
+    }
+
+    const gitHubUserToken = await getGitHubAccesToken(code);
+    const emails = await getGitHubUserEmails(gitHubUserToken);
+    const primaryEmail = getPrimaryEmail(emails);
+
+    res.redirect(`http://localhost:8080`)
+}
+
+async function getGitHubAccesToken(code, res) {
     const gitHubToken = await axios
     .post(
         `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${secret}&code=${code}`
@@ -18,36 +34,28 @@ async function getGitHubUser(code, res) {
     const urlParams = new URLSearchParams(gitHubToken);
     const accessToken = urlParams.get("access_token")
 
-    console.log("My token:", accessToken)
-
-    // return axios
-    // .get("https://api.github.com/user", {
-    //     headers: { Authorization: `Bearer ${accessToken}`}
-    // })
-    // .then((res) => res.data)
-    // .catch((error) => {
-    //     console.log("Error from GitHub")
-    //     throw error;
-    // });
-
+    console.log("My token:", accessToken);
     return accessToken;
-
 }
 
-async function getOauthLogin(req,res) {
-    console.log("reached")
-    const code = lodash.get(req, "query.code");
-    const path = lodash.get(req, "query.oath", '/');
+async function getGitHubUserEmails(userToken) {
+    const req =  fetch("https://api.github.com/user/emails", {
+        headers: {
+            Authorization: `Bearer ${userToken}`,
+            Accept: "application/vnd.github+json"
+        }
+    })
 
-    if (!code) {
-        throw new Error("No code")
+    const data = await req;
+    return data.json();
+}
+
+function getPrimaryEmail(emails) {
+    for (let i=0; i <= emails.length; i++) {
+        if (emails[i].primary === true) {
+            return emails[i].email
+        }
     }
-
-    const gitHubUser = await getGitHubUser(code);
-
-    res.redirect(`http://localhost:8080`)
 }
 
 module.exports = { getOauthLogin }
-
-
