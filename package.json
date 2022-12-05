@@ -17,6 +17,7 @@
 	},
 	"homepage": "https://github.com/AGlanborgBTH/vteams-backend#readme",
 	"dependencies": {
+		"axios": "^1.2.0",
 		"bcrypt": "^5.1.0",
 		"body-parser": "^1.20.1",
 		"cookie-parser": "^1.4.6",
@@ -25,7 +26,9 @@
 		"express": "^4.17.3",
 		"helmet": "^6.0.1",
 		"jsonwebtoken": "^8.5.1",
+		"lodash": "^4.17.21",
 		"mongoose": "^6.7.4",
+		"node-fetch": "^2.6.7",
 		"nodemon": "^2.0.15"
 	}
 }
