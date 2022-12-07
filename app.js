@@ -7,6 +7,7 @@ const cors = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const helmet = require("helmet");
 
 
 mongoose.connect(mongoString);
@@ -21,6 +22,8 @@ database.once("connected", () => {
 });
 
 const Server = express();
+
+Server.use(helmet());
 Server.use(bodyParser.json());
 Server.use(bodyParser.urlencoded({ extended: true }));
 Server.use(cors());
