@@ -24,14 +24,10 @@ async function getOauthLogin(req,res) {
         "Cryptedpassword": "github forever"
     }
 
-    let signup = await signUpGitHubUser(user);
-    let login = await logInGitHubUser(user);
-    console.log("registration");
-    console.log(signup);
-    console.log("login");
-    console.log(login);
+    await signUpGitHubUser(user);
+    res.cookie("GitHubUser", primaryEmail);
 
-    res.redirect(`http://localhost:8080`)
+    res.redirect("http://localhost:8080")
 }
 
 async function getGitHubAccesToken(code, res) {
@@ -87,23 +83,6 @@ function getPrimaryEmail(emails) {
 async function signUpGitHubUser(body) {
     try {
         const req = fetch ("http://localhost:3000/v1/users/signup", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
-
-        const data = await req;
-        return data.json()
-    } catch (error) {
-        return error
-    }
-}
-
-async function logInGitHubUser(body) {
-    try {
-        const req = fetch ("http://localhost:3000/v1/users/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
