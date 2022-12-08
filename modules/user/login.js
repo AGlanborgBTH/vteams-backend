@@ -12,9 +12,6 @@ async function postLogin (req, res) {
       const validPassword = await bcrypt.compare(body.Cryptedpassword, user.Cryptedpassword);
       if (validPassword) {
         const accessToken = createTokens(user)
-        res.cookie("access-token", accessToken, {
-          maxAge: 2592000000
-        })
         res.status(200).json({ message: "Your Password Is Valid, Welcome Stranger", id: user._id, accessToken: accessToken, Email: user.Email});
       } else {
         res.status(400).json({ error: "You Have Entered An Invalid Email or Password" });
