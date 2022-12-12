@@ -3,27 +3,27 @@ const mongoose = require("mongoose");
 
 const CitiesSchema = new mongoose.Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: true,
     },
-    Center: {
+    center: {
       type: Object,
       required: true,
     },
-    Limit: {
+    limit: {
       type: Object,
       required: true,
     },
-    Scooters : {
+    scooters : {
       type: Array,
       required: true,
     },
-    Parkings : {
+    parkings : {
       type: Array,
       required: true,
     },
-    Charing : {
+    charing : {
       type: Array,
       required: true,
     },
