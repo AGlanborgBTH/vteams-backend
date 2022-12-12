@@ -3,49 +3,49 @@ const mongoose = require("mongoose");
 
 const LogsSchema = new mongoose.Schema(
   {
-    RecordID: {
+    recordID: {
       type: String,
       required: true,
     },
-    Description: {
+    description: {
       type: String,
       required: true,
     },
-    CityID: {
+    cityID: {
       type: String,
       required: true,
     },
-    CustomerID : {
+    customerID : {
       type: Array,
       required: true,
     },
-    ScooterID : {
+    scooterID : {
       type: Array,
       required: true,
     },
-    TimeStart : {
+    timeStart : {
       type: Date,
       required: true,
       timestamp: true,
     },
-    LocationStart : {
+    locationStart : {
       type: String,
       required: true,
     },
-    TimeEnd : {
+    timeEnd : {
       type: Date,
       required: true,
       timestamp: true,
     },
-    LocationEnd : {
+    locationEnd : {
       type: String,
       required: true,
     },
-    DistanceTravelled : {
+    distanceTravelled : {
       type: String,
       required: true,
     },
-    TotalCost : {
+    totalCost : {
       type: String,
       required: true,
     },

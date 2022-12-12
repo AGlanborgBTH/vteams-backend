@@ -3,17 +3,17 @@ const { Logs } = require("../../models/Logs");
 // Post Route For Logs
 async function postLog(req, res) {
     const data = new Logs({
-        RecordID: req.body.RecordID,
-        Description: req.body.Description,
-        CityID: req.body.CityID,
-        CustomerID: req.body.CustomerID,
-        ScooterID: req.body.ScooterID,
-        TimeStart: req.body.TimeStart,
-        LocationStart: req.body.LocationStart,
-        TimeEnd: req.body.TimeEnd,
-        LocationEnd: req.body.LocationEnd,
-        DistanceTravelled: req.body.DistanceTravelled,
-        TotalCost: req.body.TotalCost
+        recordID: req.body.recordID,
+        description: req.body.description,
+        cityID: req.body.cityID,
+        customerID: req.body.customerID,
+        scooterID: req.body.scooterID,
+        timeStart: req.body.timeStart,
+        locationStart: req.body.locationStart,
+        timeEnd: req.body.timeEnd,
+        locationEnd: req.body.locationEnd,
+        distanceTravelled: req.body.distanceTravelled,
+        totalCost: req.body.totalCost
       });
       try {
         const dataToSave = await data.save();

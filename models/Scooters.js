@@ -3,39 +3,39 @@ const mongoose = require("mongoose");
 
 const ScootersSchema = new mongoose.Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: true,
     },
-    InUse: {
+    inUse: {
       type: Boolean,
       required: true,
     },
-    Velocity: {
+    velocity: {
       type: Number,
       required: true,
     },
-    Battery : {
+    battery : {
       type: Number,
       required: true,
     },
-    TimeInUse : {
+    timeInUse : {
       type: String,
       required: true,
     },
-    Charging : {
+    charging : {
       type: Boolean,
       required: true,
     },
-    City : {
+    city : {
         type: String,
         required: true,
     },
-    Location : {
+    location : {
         type: Object,
         required: true,
     },
-    Destination : {
+    destination : {
         type: Object,
         required: true,
     },
