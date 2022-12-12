@@ -18,10 +18,10 @@ async function getOauthLogin(req,res) {
     const userData = await getGitHubUserName(gitHubUserToken);
 
     const user = {
-        "Firstname": userData.login,
-        "Email": primaryEmail,
-        "GitHub": true,
-        "Cryptedpassword": "github forever"
+        "firstname": userData.login,
+        "email": primaryEmail,
+        "gitHub": true,
+        "cryptedpassword": "github forever"
     }
 
     await signUpGitHubUser(user);
