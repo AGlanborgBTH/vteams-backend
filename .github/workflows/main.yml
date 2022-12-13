@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: dockerhub login
       env:
         DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
