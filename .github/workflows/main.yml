@@ -1,0 +1,20 @@
+name: Docker Flow Backend
+
+on:
+  push:
+    branches: [dev]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: dockerhub login
+      env:
+        DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+        DOCKER_HUB_PWD: ${{ secrets.DOCKER_HUB_PWD }}
+      run: docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PWD
+    - name: docker build image
+      run: docker build -t kristinakalinchuk/vteams-backend .
+    - name: docker push image
+      run: docker push kristinakalinchuk/vteams-backend
