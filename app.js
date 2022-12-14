@@ -10,20 +10,26 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 
 const app = express();
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-const httpServer = createServer(app);
+const http = require('http').createServer(app);
 
-const io = new Server(httpServer, {
+
+const io = require('socket.io')(http, {
   cors: {
-    origin: "*"
-  },
-  path: "/my-custom-path/"
+    origins: ["http://localhost:8080"]
+  }
 });
 
 
 io.on('connection', socket => {
-  console.log("User connected with socket id:", socket.id);
+  console.log("User connected with socket:", socket.id);
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+  socket.on('my message', (msg) => {
+    console.log('message: ' + msg);
+  });
+
+  socket.emit("sendAllScooters", "Sending a list of scooters")
 });
 
 mongoose.connect(mongoString);
@@ -45,10 +51,11 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-const ver1 = require("./routes/v1.js");
+const ver1 = require("./routes/v1.js")(io);
+
 app.use("/v1", ver1);
 
 
-httpServer.listen(port, () => {
+http.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
