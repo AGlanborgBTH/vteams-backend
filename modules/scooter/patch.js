@@ -15,4 +15,6 @@ async function updateOneScooter(req, res) {
       }
 }
 
-module.exports = updateOneScooter;
+module.exports = {
+  updateOneScooter
+};
