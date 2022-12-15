@@ -1,9 +1,11 @@
 const { Scooters } = require("../../models/Scooters");
 
+
 //get All Scooters
 async function getAllScooters(req, res) {
     try {
         const data = await Scooters.find();
+        // io.emit("all_scooters", res.json({ data }) )
         res.json({ data });
       } catch (error) {
         res.status(500).json({ message: error.message });

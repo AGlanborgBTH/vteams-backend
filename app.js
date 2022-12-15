@@ -1,5 +1,5 @@
 require("dotenv").config();
-const ver1 = require("./routes/v1.js");
+
 const mongoose = require("mongoose");
 const mongoString = process.env.DATABASE_URL;
 const port = process.env.PORT || 3000;
@@ -9,6 +9,28 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 
+const app = express();
+const http = require('http').createServer(app);
+
+
+const io = require('socket.io')(http, {
+  cors: {
+    origins: ["http://localhost:8081"]
+  }
+});
+
+
+io.on('connection', (socket) => {
+  console.log("User connected with socket:", socket.id);
+  const { getAllScootersSocket } = require('./modules/scooter/getScootersWithoutRequest');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+  socket.on('my message', (msg) => {
+    console.log('message: ' + msg);
+  });
+  getAllScootersSocket(socket);
+});
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -21,19 +43,19 @@ database.once("connected", () => {
   console.log("Database Connected Successfully");
 });
 
-const Server = express();
 
-Server.use(helmet());
-Server.use(bodyParser.json());
-Server.use(bodyParser.urlencoded({ extended: true }));
-Server.use(cors());
-Server.use(express.json());
-Server.use(cookieParser());
+app.use(helmet());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
+
+const ver1 = require("./routes/v1.js");
+
+app.use("/v1", ver1);
 
 
-Server.use("/v1", ver1);
-
-
-Server.listen(port, () => {
+http.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
