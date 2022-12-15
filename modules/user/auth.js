@@ -27,7 +27,7 @@ async function getOauthLogin(req,res) {
     await signUpGitHubUser(user);
     res.cookie("GitHubUser", primaryEmail);
 
-    res.redirect("http://localhost:8081")
+    res.redirect("http://localhost:8080")
 }
 
 async function getGitHubAccesToken(code, res) {
