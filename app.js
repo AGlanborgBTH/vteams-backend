@@ -51,7 +51,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-const ver1 = require("./routes/v1.js")(io);
+const ver1 = require("./routes/v1.js");
 
 app.use("/v1", ver1);
 
