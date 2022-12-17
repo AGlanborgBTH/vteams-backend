@@ -1,16 +1,18 @@
 const { Scooters } = require("../../models/Scooters");
 
 //Update Scooter By ID
-async function updateOneScooter(req, res) {;
-  const update = req.body;
+async function updateOneScooter(req, res) {
   try {
-    const result = await Scooters.updateMany({ inUse: true }, { $set: update });
-    res.send({ modifiedCount: result.modifiedCount });
-    console.log({ modifiedCount: result.modifiedCount });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
+      const id = req.params.id;
+      const updatedData = req.body;
+      const options = { new: true };
+
+      const result = await Scooters.findByIdAndUpdate(id, updatedData, options);
+
+      res.send(result);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
 }
 
 
