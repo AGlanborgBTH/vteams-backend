@@ -4,50 +4,37 @@ const mongoose = require("mongoose");
 const LogsSchema = new mongoose.Schema(
   {
     recordID: {
-      type: String,
-      required: true,
+      type: String
     },
     description: {
-      type: String,
-      required: true,
+      type: String
     },
     cityID: {
-      type: String,
-      required: true,
+      type: String
     },
     customerID : {
-      type: Array,
-      required: true,
+      type: String
     },
     scooterID : {
-      type: Array,
-      required: true,
+      type: String
     },
     timeStart : {
       type: Date,
-      required: true,
-      timestamp: true,
     },
     locationStart : {
-      type: String,
-      required: true,
+      type: Object
     },
     timeEnd : {
       type: Date,
-      required: true,
-      timestamp: true,
     },
     locationEnd : {
-      type: String,
-      required: true,
+      type: Object
     },
     distanceTravelled : {
-      type: String,
-      required: true,
+      type: String
     },
     totalCost : {
-      type: String,
-      required: true,
+      type: String
     },
 });
 
