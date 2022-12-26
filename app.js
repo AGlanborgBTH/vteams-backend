@@ -23,12 +23,18 @@ const io = require('socket.io')(http, {
 io.on('connection', (socket) => {
   console.log("User connected with socket:", socket.id);
   const { getAllScootersSocket } = require('./modules/scooter/getScootersWithoutRequest');
+
+  socket.emit("connecting")
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
-  socket.on('my message', (msg) => {
-    console.log('message: ' + msg);
-  });
+
+  socket.on("rentScooter", (id) => {
+    console.log("renting")
+    getAllScootersSocket(socket);
+  })
+
   getAllScootersSocket(socket);
 });
 
