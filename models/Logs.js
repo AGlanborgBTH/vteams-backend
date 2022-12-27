@@ -19,13 +19,13 @@ const LogsSchema = new mongoose.Schema(
       type: String
     },
     timeStart : {
-      type: Date,
+      type: String,
     },
     locationStart : {
       type: Object
     },
     timeEnd : {
-      type: Date,
+      type: String,
     },
     locationEnd : {
       type: Object
