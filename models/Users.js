@@ -19,13 +19,11 @@ const UsersSchema = new mongoose.Schema(
     },
     adminstatus : {
       type: Boolean,
-      required: true,
       default: false,
     },
     wallet : {
       type: Number,
       default: 0,
-      required: true,
     },
   }
 );

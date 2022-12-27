@@ -15,9 +15,10 @@ async function postLog(req, res) {
         distanceTravelled: req.body.distanceTravelled,
         totalCost: req.body.totalCost
       });
+      
       try {
         const dataToSave = await data.save();
-        res.status(200).json(dataToSave);
+        res.status(200).json({data: dataToSave, id: data._id})
       } catch (error) {
         res.status(400).json({ message: error.message });
       }
