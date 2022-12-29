@@ -8,6 +8,7 @@ async function postLog(req, res) {
         cityID: req.body.cityID,
         customerID: req.body.customerID,
         scooterID: req.body.scooterID,
+        scooterName: req.body.scooterName,
         timeStart: req.body.timeStart,
         locationStart: req.body.locationStart,
         timeEnd: req.body.timeEnd,

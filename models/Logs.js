@@ -18,6 +18,9 @@ const LogsSchema = new mongoose.Schema(
     scooterID : {
       type: String
     },
+    scooterName : {
+      type: String
+    },
     timeStart : {
       type: String,
     },
