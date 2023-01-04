@@ -65,3 +65,5 @@ app.use("/v1", ver1);
 http.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
+
+module.exports = { port, database, io, bodyParser };

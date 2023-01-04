@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon app.js"
+		"start": "nodemon app.js",
+		"test": "mocha --exit"
 	},
 	"repository": {
 		"type": "git",
@@ -31,5 +32,9 @@
 		"node-fetch": "^2.6.7",
 		"nodemon": "^2.0.15",
 		"socket.io": "^4.5.4"
+	},
+	"devDependencies": {
+		"chai": "^4.3.7",
+		"mocha": "^10.2.0"
 	}
 }
