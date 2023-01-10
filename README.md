@@ -122,8 +122,6 @@
 >  curl -X DELETE -H "Content-Type: application/json" http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
 
----
-
 ## TEST
 
 ---
