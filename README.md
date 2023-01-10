@@ -42,7 +42,7 @@
 
 > | http code | content-type               | response    |
 > | --------- | -------------------------- | ----------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string |
+> | `200`     | `text/plain;charset=UTF-8` | JSON string |
 
 ##### Example cURL
 
@@ -53,7 +53,7 @@
 </details>
 
 <details>
- <summary><code>POST</code> <code><b>/{stub_numeric_id}</b></code> <code>(gets stub by its resource-id-{stub_numeric_id} in the YAML config)</code></summary>
+ <summary><code>POST</code> <code><b>/v1/users/:id</b></code> <code>Adds a new user</code></summary>
 
 ##### Parameters
 
@@ -65,7 +65,7 @@
 
 > | http code | content-type               | response                                 |
 > | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string                              |
+> | `200`     | `text/plain;charset=UTF-8` | JSON String                              |
 > | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
 
 ##### Example cURL
@@ -77,7 +77,7 @@
 </details>
 
 <details>
-  <summary><code>PATCH</code> <code><b>/{uuid}</b></code> <code>(gets stub by its defined uuid property)</code></summary>
+  <summary><code>PATCH</code> <code><b>/v1/users/:id</b></code> <code>Updates an existing user by ID</code></summary>
 
 ##### Parameters
 
@@ -89,7 +89,7 @@
 
 > | http code | content-type               | response                                 |
 > | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string                              |
+> | `200`     | `text/plain;charset=UTF-8` | JSON string                              |
 > | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
 
 ##### Example cURL
@@ -101,7 +101,7 @@
 </details>
 
 <details>
-  <summary><code>DELETE</code> <code><b>/proxy-config/default</b></code> <code>(gets <b>default</b> proxy-config)</code></summary>
+  <summary><code>DELETE</code> <code><b>/v1/users/:id</b></code> <code>Deletes a single user by ID.</code></summary>
 
 ##### Parameters
 
@@ -119,4 +119,3 @@
 > ```javascript
 >  curl -X GET -H "Content-Type: application/json" http://localhost:8889/proxy-config/default
 > ```
-
