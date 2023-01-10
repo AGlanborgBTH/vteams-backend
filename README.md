@@ -53,7 +53,7 @@
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/{stub_numeric_id}</b></code> <code>(gets stub by its resource-id-{stub_numeric_id} in the YAML config)</code></summary>
+ <summary><code>POST</code> <code><b>/{stub_numeric_id}</b></code> <code>(gets stub by its resource-id-{stub_numeric_id} in the YAML config)</code></summary>
 
 ##### Parameters
 
@@ -77,7 +77,7 @@
 </details>
 
 <details>
-  <summary><code>GET</code> <code><b>/{uuid}</b></code> <code>(gets stub by its defined uuid property)</code></summary>
+  <summary><code>PATCH</code> <code><b>/{uuid}</b></code> <code>(gets stub by its defined uuid property)</code></summary>
 
 ##### Parameters
 
@@ -101,7 +101,7 @@
 </details>
 
 <details>
-  <summary><code>GET</code> <code><b>/proxy-config/default</b></code> <code>(gets <b>default</b> proxy-config)</code></summary>
+  <summary><code>DELETE</code> <code><b>/proxy-config/default</b></code> <code>(gets <b>default</b> proxy-config)</code></summary>
 
 ##### Parameters
 
@@ -119,30 +119,4 @@
 > ```javascript
 >  curl -X GET -H "Content-Type: application/json" http://localhost:8889/proxy-config/default
 > ```
-
-</details>
-
-<details>
-  <summary><code>GET</code> <code><b>/proxy-config/{uuid}</b></code> <code>(gets proxy config by its uuid property)</code></summary>
-
-##### Parameters
-
-> | name   | type     | data type | description                                 |
-> | ------ | -------- | --------- | ------------------------------------------- |
-> | `uuid` | required | string    | The specific proxy config unique idendifier |
-
-##### Responses
-
-> | http code | content-type               | response                                 |
-> | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string                              |
-> | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
-
-##### Example cURL
-
-> ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/proxy-config/some-unique-uuid-string
-> ```
-
-</details>
 
