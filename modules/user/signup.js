@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 // Signup Function
 async function postSignUp (req, res) {
-  console.log(req.body)
     const body = req.body;
 
     if (!(body.email && body.cryptedpassword)) {
