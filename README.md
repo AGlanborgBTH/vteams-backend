@@ -1,14 +1,9 @@
-## Create beautiful REST API docs authored in Markdown
+## E-Bike REST API Documentation
 
--   Adopted from: https://stubby4j.com/docs/admin_portal.html
--   Inspired by Swagger API docs style & structure: https://petstore.swagger.io/#/pet
-
----
-
-#### Creating new/overwriting existing stubs & proxy configs
+#### Creating All Users
 
 <details>
- <summary><code>POST</code> <code><b>/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>Retrieves a list of all users.</code></summary>
 
 ##### Parameters
 
@@ -27,7 +22,7 @@
 ##### Example cURL
 
 > ```javascript
->  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8889/
+>  curl -X GET -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/users
 > ```
 
 </details>
