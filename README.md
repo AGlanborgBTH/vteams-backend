@@ -71,7 +71,7 @@
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/0
+>  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
 
 </details>
@@ -95,7 +95,7 @@
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/some-unique-uuid-string
+>   curl -X PATCH -H "Content-Type: application/json" --data @patch.json http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
 
 </details>
@@ -111,11 +111,11 @@
 
 > | http code | content-type               | response                                 |
 > | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string                              |
+> | `200`     | `text/plain;charset=UTF-8` | JSON string                              |
 > | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
 
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/proxy-config/default
+>  curl -X DELETE -H "Content-Type: application/json" http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
