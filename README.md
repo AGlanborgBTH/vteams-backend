@@ -27,12 +27,12 @@
 
 </details>
 
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>(gets all in-memory stub & proxy configs)</code></summary>
-
 ---
 
-#### Retriving User By ID
+#### Retrive User By Id
+
+<details>
+ <summary><code>GET</code> <code><b>/v1/users/:id</b></code> <code>Retrieves a single user by ID</code></summary>
 
 ##### Parameters
 
@@ -47,32 +47,7 @@
 ##### Example cURL
 
 > ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/
-> ```
-
-</details>
-
----
-
-#### Listing existing stubs & proxy configs as YAML string
-
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>(gets all in-memory stub & proxy configs)</code></summary>
-
-##### Parameters
-
-> None
-
-##### Responses
-
-> | http code | content-type               | response    |
-> | --------- | -------------------------- | ----------- |
-> | `200`     | `text/plain;charset=UTF-8` | YAML string |
-
-##### Example cURL
-
-> ```javascript
->  curl -X GET -H "Content-Type: application/json" http://localhost:8889/
+>  curl -X GET -H "Content-Type: application/json" http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
 
 </details>
