@@ -261,13 +261,13 @@
 </details>
 
 <details>
- <summary><code>POST</code> <code><b>/v1/users/:id</b></code> <code>Adds a new user</code></summary>
+ <summary><code>POST</code> <code><b>/v1/logs/:id</b></code> <code>Adds a new log</code></summary>
 
 ##### Parameters
 
-> | name              | type     | data type    | description                  |
-> | ----------------- | -------- | ------------ | ---------------------------- |
-> | `stub_numeric_id` | required | int ($int64) | The specific stub numeric id |
+> | name | type     | data type    | description                  |
+> | ---- | -------- | ------------ | ---------------------------- |
+> | `id` | required | int ($int64) | The specific stub numeric id |
 
 ##### Responses
 
@@ -279,7 +279,7 @@
 ##### Example cURL
 
 > ```javascript
->  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/users/6397483522a9c3cea58caa87
+>  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/logs/
 > ```
 
 </details>
