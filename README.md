@@ -261,7 +261,7 @@
 </details>
 
 <details>
-  <summary><code>PATCH</code> <code><b>/v1/log/:id</b></code> <code>Updates an log by ID</code></summary>
+  <summary><code>PATCH</code> <code><b>/v1/logs/:id</b></code> <code>Updates an log by ID</code></summary>
 
 ##### Parameters
 
