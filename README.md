@@ -261,6 +261,30 @@
 </details>
 
 <details>
+ <summary><code>POST</code> <code><b>/v1/users/:id</b></code> <code>Adds a new user</code></summary>
+
+##### Parameters
+
+> | name              | type     | data type    | description                  |
+> | ----------------- | -------- | ------------ | ---------------------------- |
+> | `stub_numeric_id` | required | int ($int64) | The specific stub numeric id |
+
+##### Responses
+
+> | http code | content-type               | response                                 |
+> | --------- | -------------------------- | ---------------------------------------- |
+> | `200`     | `text/plain;charset=UTF-8` | JSON String                              |
+> | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/users/6397483522a9c3cea58caa87
+> ```
+
+</details>
+
+<details>
   <summary><code>PATCH</code> <code><b>/v1/logs/:id</b></code> <code>Updates an log by ID</code></summary>
 
 ##### Parameters
