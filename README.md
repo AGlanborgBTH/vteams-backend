@@ -30,6 +30,8 @@
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>(gets all in-memory stub & proxy configs)</code></summary>
 
+---
+
 #### Retriving User By ID
 
 ##### Parameters
