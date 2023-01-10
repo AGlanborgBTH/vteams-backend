@@ -204,6 +204,8 @@
 
 </details>
 
+---
+
 ### Logs
 
 #### Retriving All Logs
