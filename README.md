@@ -1,9 +1,9 @@
 ## E-Bike REST API Documentation
 
-#### Creating All Users
+#### Retriving All Users
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>Retrieves a list of all users.</code></summary>
+ <summary><code>GET</code> <code><b>/v1/users</b></code> <code>Retrieves a list of all users.</code></summary>
 
 ##### Parameters
 
@@ -15,7 +15,7 @@
 
 > | http code | content-type               | response                                 |
 > | --------- | -------------------------- | ---------------------------------------- |
-> | `201`     | `text/plain;charset=UTF-8` | `Configuration created successfully`     |
+> | `201`     | `text/plain;charset=UTF-8` | `Configuration retrived successfully`    |
 > | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
 > | `405`     | `text/html;charset=utf-8`  | None                                     |
 
@@ -23,6 +23,29 @@
 
 > ```javascript
 >  curl -X GET -H "Content-Type: application/json" --data @post.json http://localhost:3000/v1/users
+> ```
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>(gets all in-memory stub & proxy configs)</code></summary>
+
+#### Retriving User By ID
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code | content-type               | response    |
+> | --------- | -------------------------- | ----------- |
+> | `200`     | `text/plain;charset=UTF-8` | YAML string |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" http://localhost:8889/
 > ```
 
 </details>
