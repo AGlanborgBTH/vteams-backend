@@ -309,3 +309,83 @@
 </details>
 
 ---
+
+### Cities
+
+#### Retriving All Cities
+
+<details>
+ <summary><code>GET</code> <code><b>/v1/cities</b></code> <code>Retrieves a list of all cities.</code></summary>
+
+##### Parameters
+
+> | name | type     | data type             | description |
+> | ---- | -------- | --------------------- | ----------- |
+> | None | required | object (JSON or YAML) | N/A         |
+
+##### Responses
+
+> | http code | content-type               | response                                 |
+> | --------- | -------------------------- | ---------------------------------------- |
+> | `201`     | `text/plain;charset=UTF-8` | `Configuration retrived successfully`    |
+> | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
+> | `405`     | `text/html;charset=utf-8`  | None                                     |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" --data @get.json http://localhost:3000/v1/cities/
+> ```
+
+</details>
+
+---
+
+#### Retrive city By Id
+
+<details>
+ <summary><code>GET</code> <code><b>/v1/cities/:id</b></code> <code>Retrieves a single city by ID</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code | content-type               | response    |
+> | --------- | -------------------------- | ----------- |
+> | `200`     | `text/plain;charset=UTF-8` | JSON string |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X GET -H "Content-Type: application/json" http://localhost:3000/v1/cities/6384bb54079e5520699909d6
+> ```
+
+</details>
+
+<details>
+  <summary><code>PATCH</code> <code><b>/v1/cities/:id</b></code> <code>Updates an city by ID</code></summary>
+
+##### Parameters
+
+> | name | type     | data type | description                         |
+> | ---- | -------- | --------- | ----------------------------------- |
+> | `id` | required | string    | The specific stub unique idendifier |
+
+##### Responses
+
+> | http code | content-type               | response                                 |
+> | --------- | -------------------------- | ---------------------------------------- |
+> | `200`     | `text/plain;charset=UTF-8` | JSON string                              |
+> | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
+
+##### Example cURL
+
+> ```javascript
+>   curl -X PATCH -H "Content-Type: application/json" --data @patch.json http://localhost:3000/v1/cities/6384bb54079e5520699909d6
+> ```
+
+</details>
+
+---
