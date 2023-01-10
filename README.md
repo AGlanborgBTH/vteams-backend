@@ -1,5 +1,7 @@
 ## E-Bike REST API Documentation
 
+### Users
+
 #### Retriving All Users
 
 <details>
@@ -119,3 +121,5 @@
 > ```javascript
 >  curl -X DELETE -H "Content-Type: application/json" http://localhost:3000/v1/users/6397483522a9c3cea58caa87
 > ```
+
+---
