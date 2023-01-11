@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const clientId = process.env.GITHUBCLIENTID;
 const secret = process.env.GITHUBCLIENTSECRET;
 
-async function getOauthLogin(req,res) {
+async function getOauthLogin(req, res) {
     const code = lodash.get(req, "query.code");
 
     if (!code) {
@@ -32,13 +32,13 @@ async function getOauthLogin(req,res) {
 
 async function getGitHubAccesToken(code, res) {
     const gitHubToken = await axios
-    .post(
-        `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${secret}&code=${code}`
-    )
-    .then((res) => res.data)
-    .catch((error) => {
-        throw error;
-    });
+        .post(
+            `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${secret}&code=${code}`
+        )
+        .then((res) => res.data)
+        .catch((error) => {
+            throw error;
+        });
 
     const urlParams = new URLSearchParams(gitHubToken);
     const accessToken = urlParams.get("access_token")
@@ -47,7 +47,7 @@ async function getGitHubAccesToken(code, res) {
 }
 
 async function getGitHubUserEmails(userToken) {
-    const req =  fetch("https://api.github.com/user/emails", {
+    const req = fetch("https://api.github.com/user/emails", {
         headers: {
             Authorization: `Bearer ${userToken}`,
             Accept: "application/vnd.github+json"
@@ -59,7 +59,7 @@ async function getGitHubUserEmails(userToken) {
 }
 
 async function getGitHubUserName(userToken) {
-    const req =  fetch("https://api.github.com/user", {
+    const req = fetch("https://api.github.com/user", {
         headers: {
             Authorization: `Bearer ${userToken}`,
             Accept: "application/vnd.github+json",
@@ -73,7 +73,7 @@ async function getGitHubUserName(userToken) {
 
 
 function getPrimaryEmail(emails) {
-    for (let i=0; i <= emails.length; i++) {
+    for (let i = 0; i <= emails.length; i++) {
         if (emails[i].primary === true) {
             return emails[i].email
         }
@@ -82,7 +82,7 @@ function getPrimaryEmail(emails) {
 
 async function signUpGitHubUser(body) {
     try {
-        const req = fetch ("http://localhost:3000/v1/users/signup", {
+        const req = fetch("http://localhost:3000/v1/users/signup", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { port, database, io, bodyParser} = require('../app.js');
+const { port, database, io, bodyParser } = require('../app.js');
 
 
 describe("Backend Server Tests", () => {

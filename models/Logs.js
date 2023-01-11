@@ -12,34 +12,34 @@ const LogsSchema = new mongoose.Schema(
     cityID: {
       type: String
     },
-    customerID : {
+    customerID: {
       type: String
     },
-    scooterID : {
+    scooterID: {
       type: String
     },
-    scooterName : {
+    scooterName: {
       type: String
     },
-    timeStart : {
+    timeStart: {
       type: String,
     },
-    locationStart : {
+    locationStart: {
       type: Object
     },
-    timeEnd : {
+    timeEnd: {
       type: String,
     },
-    locationEnd : {
+    locationEnd: {
       type: Object
     },
-    distanceTravelled : {
+    distanceTravelled: {
       type: String
     },
-    totalCost : {
+    totalCost: {
       type: String
     },
-});
+  });
 
 
 

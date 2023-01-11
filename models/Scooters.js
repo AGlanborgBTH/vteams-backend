@@ -15,23 +15,23 @@ const ScootersSchema = new mongoose.Schema(
     velocity: {
       type: Number,
     },
-    battery : {
+    battery: {
       type: Number,
     },
-    timeInUse : {
+    timeInUse: {
       type: String,
     },
-    charging : {
+    charging: {
       type: Boolean,
     },
-    city : {
-        type: String,
+    city: {
+      type: String,
     },
-    location : {
-        type: Object,
+    location: {
+      type: Object,
     },
-    destination : {
-        type: Object,
+    destination: {
+      type: Object,
     },
   }
 );

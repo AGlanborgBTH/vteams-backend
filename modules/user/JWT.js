@@ -12,17 +12,19 @@ const validateToken = (req, res, next) => {
     const token = req.cookies["access-token"]
 
     if (!token) {
-        return res.status(400).json({error: "User not authanticated"});
-    } else {
-        try {
-            const validToken = verify(token, secret)
-            if (validToken) {
-                req.authenticated = true;
-                return next();
-            }
-        } catch(err) {
-            return res.status(400).json({ error: err })
+        return res.status(400).json({ error: "User not authanticated" });
+    }
+    try {
+        const validToken = verify(token, secret)
+
+        if (validToken) {
+            req.authenticated = true;
+            return next();
         }
+
+        throw "Invalid Token"
+    } catch (err) {
+        return res.status(400).json({ error: err })
     }
 }
 
