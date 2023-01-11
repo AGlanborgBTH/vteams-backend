@@ -12,13 +12,13 @@ const CitiesSchema = new mongoose.Schema(
     limit: {
       type: Object,
     },
-    scooters : {
+    scooters: {
       type: Array,
     },
-    parkings : {
+    parkings: {
       type: Array,
     },
-    charing : {
+    charing: {
       type: Array,
     },
   }

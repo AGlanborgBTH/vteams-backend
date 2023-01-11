@@ -13,15 +13,15 @@ const UsersSchema = new mongoose.Schema(
     surname: {
       type: String,
     },
-    cryptedpassword : {
+    cryptedpassword: {
       type: String,
       required: true,
     },
-    adminstatus : {
+    adminstatus: {
       type: Boolean,
       default: false,
     },
-    wallet : {
+    wallet: {
       type: Number,
       default: 100,
     },
