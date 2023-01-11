@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "nodemon app.js",
-		"test": "mocha --exit"
+		"test": "mocha --exit --timeout 10000"
 	},
 	"repository": {
 		"type": "git",
@@ -31,10 +31,12 @@
 		"mongoose": "^6.7.4",
 		"node-fetch": "^2.6.7",
 		"nodemon": "^2.0.15",
+		"package": "^1.0.1",
 		"socket.io": "^4.5.4"
 	},
 	"devDependencies": {
 		"chai": "^4.3.7",
+		"chai-http": "^4.3.0",
 		"mocha": "^10.2.0"
 	}
 }

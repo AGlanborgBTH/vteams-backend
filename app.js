@@ -66,4 +66,4 @@ http.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
 
-module.exports = { port, database, io, bodyParser };
+module.exports = app;
