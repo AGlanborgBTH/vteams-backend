@@ -9,7 +9,7 @@ async function postSignUp (req, res) {
       return res.status(400).send({ error: "Data not formatted properly" });
     }
 
-    if (!body.GitHub) {
+    if (!body.gitHub) {
       //check if all fields are filled, email, firstname, surname, cryptedpassword
       if (!(body.email && body.firstname && body.surname && body.cryptedpassword)) {
         return res.status(400).send({ error: "You're missing a field" });

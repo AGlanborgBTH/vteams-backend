@@ -53,7 +53,7 @@ database.once("connected", () => {
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({origin: 'http://localhost:8080'}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -65,3 +65,5 @@ app.use("/v1", ver1);
 http.listen(port, () => {
   console.log(`Server Started at ${port}`);
 });
+
+module.exports = { port, database, io, bodyParser };

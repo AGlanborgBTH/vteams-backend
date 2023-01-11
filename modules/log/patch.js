@@ -15,4 +15,4 @@ async function updateOneLog(req, res) {
     }
 }
 
-module.exports = updateOneLog;
+module.exports = { updateOneLog };

@@ -8,6 +8,7 @@ async function postLog(req, res) {
         cityID: req.body.cityID,
         customerID: req.body.customerID,
         scooterID: req.body.scooterID,
+        scooterName: req.body.scooterName,
         timeStart: req.body.timeStart,
         locationStart: req.body.locationStart,
         timeEnd: req.body.timeEnd,
@@ -15,9 +16,10 @@ async function postLog(req, res) {
         distanceTravelled: req.body.distanceTravelled,
         totalCost: req.body.totalCost
       });
+      
       try {
         const dataToSave = await data.save();
-        res.status(200).json(dataToSave);
+        res.status(200).json({data: dataToSave, id: data._id})
       } catch (error) {
         res.status(400).json({ message: error.message });
       }
