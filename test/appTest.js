@@ -34,15 +34,15 @@ describe('Api Tests', () => {
       chai.request(server)
       .get('/v1/scooters')
       .end((err, res) => {
-          res.should.have.status(200, "Api didn't send status 200");
-          res.body.should.be.a('object');
-          res.body.data.length.should.be.gte(1000, 'There should be at least 1000 scooters');
-          res.body.data.forEach(data => {
-              data.name.should.not.be.empty;
-              data.location.should.not.be.empty;
-              data.city.should.not.be.empty;
+        res.should.have.status(200, "Api didn't send status 200");
+        res.body.should.be.a('object');
+        res.body.data.length.should.be.gte(1000, 'There should be at least 1000 scooters');
+        res.body.data.forEach(data => {
+          data.name.should.not.be.empty;
+          data.location.should.not.be.empty;
+          data.city.should.not.be.empty;
           });
-          done();
+        done();
       });
   })
 
@@ -50,9 +50,9 @@ describe('Api Tests', () => {
       chai.request(server)
       .get('/v1/users')
       .end((err, res) => {
-          res.should.have.status(200, "Api didn't send status 200");
-          expect(res.body.data).to.satisfy(data => data.some(d => d.adminstatus === true, 'At least one user have adminstatus'));
-          done();
+        res.should.have.status(200, "Api didn't send status 200");
+        expect(res.body.data).to.satisfy(data => data.some(d => d.adminstatus === true, 'At least one user have adminstatus'));
+        done();
       });
   })
 })
